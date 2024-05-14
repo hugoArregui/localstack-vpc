@@ -1,15 +1,23 @@
-# Welcome to your CDK TypeScript project
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`TestStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+```
+docker-compose up -d
+cdklocal bootstrap
+cdklocal deploy
+```
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-## Useful commands
+```
+ ❌  TestStack failed: Error: The stack named TestStack failed to deploy: CREATE_FAILED (Resource deployment loop completed, pending resource changes: [{'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPublicSubnet1NATGateway9C16659E', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::NatGateway', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPublicSubnet2NATGateway9B8AE11A', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::NatGateway', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPrivateSubnet1DefaultRoute1AA8E2E5', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::Route', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPrivateSubnet2DefaultRouteB0E07F99', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::Route', 'Scope': [], 'Details': []}}])
+    at FullCloudFormationDeployment.monitorDeployment (/home/hugo/.nvm/versions/node/v18.20.2/lib/node_modules/aws-cdk/lib/index.js:440:10568)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deployStack2 [as deployStack] (/home/hugo/.nvm/versions/node/v18.20.2/lib/node_modules/aws-cdk/lib/index.js:443:199515)
+    at async /home/hugo/.nvm/versions/node/v18.20.2/lib/node_modules/aws-cdk/lib/index.js:443:181237
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+ ❌ Deployment failed: Error: The stack named TestStack failed to deploy: CREATE_FAILED (Resource deployment loop completed, pending resource changes: [{'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPublicSubnet1NATGateway9C16659E', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::NatGateway', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPublicSubnet2NATGateway9B8AE11A', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::NatGateway', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPrivateSubnet1DefaultRoute1AA8E2E5', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::Route', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPrivateSubnet2DefaultRouteB0E07F99', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::Route', 'Scope': [], 'Details': []}}])
+    at FullCloudFormationDeployment.monitorDeployment (/home/hugo/.nvm/versions/node/v18.20.2/lib/node_modules/aws-cdk/lib/index.js:440:10568)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deployStack2 [as deployStack] (/home/hugo/.nvm/versions/node/v18.20.2/lib/node_modules/aws-cdk/lib/index.js:443:199515)
+    at async /home/hugo/.nvm/versions/node/v18.20.2/lib/node_modules/aws-cdk/lib/index.js:443:181237
+
+The stack named TestStack failed to deploy: CREATE_FAILED (Resource deployment loop completed, pending resource changes: [{'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPublicSubnet1NATGateway9C16659E', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::NatGateway', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPublicSubnet2NATGateway9B8AE11A', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::NatGateway', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPrivateSubnet1DefaultRoute1AA8E2E5', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::Route', 'Scope': [], 'Details': []}}, {'Type': 'Resource', 'ResourceChange': {'Action': 'Add', 'LogicalResourceId': 'vpcPrivateSubnet2DefaultRouteB0E07F99', 'PhysicalResourceId': None, 'ResourceType': 'AWS::EC2::Route', 'Scope': [], 'Details': []}}])
+```
