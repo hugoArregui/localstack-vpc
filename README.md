@@ -10,7 +10,7 @@ Stack ARN:
 arn:aws:cloudformation:us-east-1:000000000000:stack/TestStack/9d55688c
 ```
 
-No `Access-Control-Allow-Origin` in the response for the preflight request (also a 202 status code is returned, although the doc seems to suggest a 204 should be returned instead):
+No `Access-Control-Allow-Origin` in the response for the preflight request (also a 200 status code is returned, although the doc seems to suggest a 204 should be returned instead):
 
 ```
 curl -v --location --request OPTIONS 'http://localhost:4566/restapis/h1nhe8s5xg/prod/_user_request_/users' \
