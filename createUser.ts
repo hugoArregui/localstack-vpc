@@ -1,6 +1,6 @@
 import { APIGatewayProxyEvent } from "aws-lambda";
 
-export function handler(_event: APIGatewayProxyEvent) {
+export async function handler(_event: APIGatewayProxyEvent) {
   return {
     statusCode: 201,
     headers: {

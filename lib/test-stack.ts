@@ -6,6 +6,30 @@ export class TestStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
+    const authorizerFunction = new aws_lambda_nodejs.NodejsFunction(
+      this,
+      "TokenAuthorizerFunction",
+      {
+        runtime: aws_lambda.Runtime.NODEJS_20_X,
+        handler: "handler",
+        entry: "authorizer.ts",
+        functionName: "TokenAuthorizerFunction",
+        bundling: {
+          minify: true,
+          sourceMap: true,
+          externalModules: ["aws-sdk"],
+        },
+      },
+    );
+
+    const authorizer = new aws_apigateway.TokenAuthorizer(
+      this,
+      "TokenAuthorizer",
+      {
+        handler: authorizerFunction,
+      },
+    );
+
     const api = new aws_apigateway.RestApi(this, "TestApi", {
       defaultCorsPreflightOptions: {
         allowHeaders: [
@@ -41,11 +65,7 @@ export class TestStack extends Stack {
     users.addMethod(
       "POST",
       new aws_apigateway.LambdaIntegration(createUserFunction),
-    );
-
-    users.addMethod(
-      "DELETE",
-      new aws_apigateway.LambdaIntegration(createUserFunction),
+      { authorizer },
     );
   }
 }
